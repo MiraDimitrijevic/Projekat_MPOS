@@ -56,7 +56,7 @@ class FavDocController extends Controller
            'user_id' =>  Auth::user()->id,
         ]);
 
-        return response()->json(['success'=>true,'favorite'=> new ResourceFavDoc($favDoc)]);
+        return response()->json(['statusCode'=>200,'data'=> new ResourceFavDoc($favDoc)]);
     }
 
     /**

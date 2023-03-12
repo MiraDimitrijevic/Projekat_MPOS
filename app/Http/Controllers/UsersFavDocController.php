@@ -12,7 +12,7 @@ class UsersFavDocController extends Controller
     public function index($user_id) {
         $favDocs=FavDoc::get()->where('user_id', $user_id);
         if(is_null($favDocs)) return response()->json("Nemate omiljenih doktora",404);
-        else         return ['omiljeni' => ResourceFavDoc::collection(FavDoc::get()->where('user_id', $user_id))];
+        else         return ['data' => ResourceFavDoc::collection(FavDoc::get()->where('user_id', $user_id))];
   
            }
 }

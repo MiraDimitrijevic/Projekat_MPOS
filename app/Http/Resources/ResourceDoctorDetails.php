@@ -12,7 +12,7 @@ class ResourceDoctorDetails extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public static $wrap='doctor';
+    public static $wrap='data';
 
     public function toArray($request)
     {

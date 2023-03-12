@@ -11,7 +11,7 @@ class UsersAppointmentsController extends Controller
     public function index($user_id) {
         $appointments=Appointments::get()->where('user_id', $user_id);
         if(is_null($appointments)) return response()->json("Nemate zakazanih pregleda",404);
-        else         return ['pregledi' => ResourceAppointments::collection(Appointments::get()->where('user_id', $user_id))];
+        else         return ['data' => ResourceAppointments::collection(Appointments::get()->where('user_id', $user_id))];
   
            }
 }

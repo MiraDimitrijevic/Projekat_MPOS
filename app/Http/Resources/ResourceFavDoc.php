@@ -16,9 +16,10 @@ class ResourceFavDoc extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=>$this->resource->id,
-            'doctor'=> new ResourceDoctors($this->resource->doctor),
+            'doctor_id'=>$this->resource->doctor_id,
+            'doctorDetails'=> new ResourceDoctors($this->resource->doctor),
+            
 
-
+           
         ];     }
 }

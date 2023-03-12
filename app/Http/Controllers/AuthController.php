@@ -18,6 +18,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|string|max:40|email|unique:users',
             'password' => 'required|min:8',
+            'biography' => 'required|max:255'
            
 
             
@@ -31,6 +32,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'biography'=>$request->biography,
             'status'=>'active',
 
            
@@ -38,7 +40,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('registration_token')->plainTextToken;
 
-        return response()->json(['success'=>true, 'data' => $user, 'access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json(['statusCode'=>200,  'data' => $token, 'token_type' => 'Bearer']);
     }
     public function login(Request $request)
     {
@@ -48,11 +50,9 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
+        $token = $user->createToken('token')->plainTextToken;
 
-        $token = $user->createToken('token_login')->plainTextToken;
-
-        return response()
-            ->json(['success'=>true,'user_id'=>$user->id,  'access_token' => $token, 'token_type' => 'Bearer',]);
+        return response()->json(['statusCode'=>200,  'token' => $token, 'token_type' => 'Bearer']);
     }
     
     public function logout()
@@ -61,8 +61,7 @@ class AuthController extends Controller
         $user->tokens->each(function($token, $key) {
             $token->delete();
         });
-        return [
-            'message' => 'You have successfully logged out!'
-        ];
+        return response()
+        ->json(['statusCode'=>200,'data'=>"You have successfully logged out"]);
     }
 }

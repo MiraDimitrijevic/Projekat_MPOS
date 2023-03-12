@@ -45,9 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    protected $appends = [
-        'profile_photo_path',
-    ];
+ 
 
     public function fav_doctor(){
         return $this->hasMany(FavDoc::class);

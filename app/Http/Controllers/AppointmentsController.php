@@ -42,7 +42,7 @@ class AppointmentsController extends Controller
             
             'doctor_id'=>'required',
             'time'=>'date_format:H:i:s|required',
-            'date'=>'date_format:Y/m/d|required|after_or_equal:now',
+            'date'=>'date_format:Y/m/d|required',
 
 
         ]);
@@ -61,7 +61,7 @@ class AppointmentsController extends Controller
            'user_id' =>  Auth::user()->id,
         ]);
 
-        return response()->json(['success'=>true,"appointment"=> new ResourceAppointments($appointment)]);
+        return response()->json(['statusCode'=>200,"data"=> new ResourceAppointments($appointment)]);
     }
 
     /**
@@ -93,9 +93,13 @@ class AppointmentsController extends Controller
      * @param  \App\Models\Appointments  $appointments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointments $appointments)
+    public function update(Request $request, Appointments $appointment)
     {
-        //
+        $appointment->status = $request->status;
+
+        $appointment->save();
+    
+        return response()->json(['success'=>true]);
     }
 
     /**
@@ -108,4 +112,6 @@ class AppointmentsController extends Controller
     {
         //
     }
+
+  
 }

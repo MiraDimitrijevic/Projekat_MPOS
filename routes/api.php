@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return auth()->user();
     });
 
-    Route::resource('appointment', AppointmentsController::class)->only([ 'store']);
+    Route::resource('appointment', AppointmentsController::class)->only([ 'store', 'update']);
     Route::resource('user', UserController::class)->only([ 'show' , 'update']);
     Route::resource('favoriteDoctor', FavDocController::class)->only([ 'store', 'destroy']);
     Route::resource('doctor', DoctorController::class)->only([ 'show', 'index']);
