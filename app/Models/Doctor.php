@@ -15,7 +15,8 @@ protected $fillable = [
     'category',
     'experience',
     'biography',
-    'status',
+    'email',
+    'photo',
 ];
 
 public function fav_doctor(){

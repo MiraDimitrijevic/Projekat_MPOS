@@ -21,7 +21,8 @@ class ResourceDoctors extends JsonResource
             'category'=>$this->resource->category,
             'experience'=>$this->resource->experience,
             'biography'=>$this->resource->biography,
-            'status'=>$this->resource->status,
+            'email'=>$this->resource->email,
+            'photo'=>$this->resource->photo,
         ];
     }
 }

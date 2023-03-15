@@ -19,7 +19,8 @@ class CreateDoctorsTable extends Migration
             $table->string('category')->nullable();
             $table->unsignedInteger('experience')->nullable();
             $table->longText('biography')->nullable();
-            $table->string('status')->nullable();
+            $table->string('email')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,8 @@ class AuthController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|string|max:40|email|unique:users',
             'password' => 'required|min:8',
-            'biography' => 'required|max:255'
+            'biography' => 'required|max:255',
+            
            
 
             
@@ -34,6 +35,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'biography'=>$request->biography,
             'status'=>'active',
+            'profile_photo_path'=>'profile_1.png',
 
            
         ]);
